@@ -7,8 +7,6 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.mockito.BDDMockito;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +19,7 @@ import com.alvaro.pontoInteligente.api.repositories.FuncionarioRepository;
 
 @SpringBootTest
 @ActiveProfiles("test")
-@TestInstance(Lifecycle.PER_CLASS)
+//@TestInstance(Lifecycle.PER_CLASS)
 public class FuncionarioServiceTest {
 	
 	@MockBean
