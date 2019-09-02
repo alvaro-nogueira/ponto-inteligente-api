@@ -78,7 +78,7 @@ public class LancamentoRepositoryTest {
 
 		PageRequest page = PageRequest.of(0, 2);
 		Page<Lancamento> lancamentos = lancamentoRepository.findByFuncionarioId(funcionarioId, page);
-
+		
 		assertEquals(2, lancamentos.getTotalElements());
 
 	}
