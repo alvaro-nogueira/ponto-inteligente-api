@@ -35,9 +35,20 @@ public class Lancamento implements Serializable {
 	private Date dataAtualizacao;
 	
 	private Funcionario funcionario;
-	
-	public Lancamento() {
-		
+
+	public Lancamento() {}
+
+	public Lancamento(Long id, Date data, String descricao, String localizacao, TipoEnum tipo, Date dataCriacao,
+			Date dataAtualizacao, Funcionario funcionario) {
+		super();
+		this.id = id;
+		this.data = data;
+		this.descricao = descricao;
+		this.localizacao = localizacao;
+		this.tipo = tipo;
+		this.dataCriacao = dataCriacao;
+		this.dataAtualizacao = dataAtualizacao;
+		this.funcionario = funcionario;
 	}
 
 	@Id
@@ -122,7 +133,11 @@ public class Lancamento implements Serializable {
 
 	@PrePersist
 	public void prePersist() {
-		dataCriacao = new Date();
+
+		Date data = new Date();
+		dataCriacao = data;
+		dataAtualizacao = data;
+
 	}
 
 	@Override

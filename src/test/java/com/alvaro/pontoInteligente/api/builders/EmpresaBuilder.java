@@ -9,8 +9,8 @@ import com.alvaro.pontoInteligente.api.entities.Funcionario;
 public class EmpresaBuilder {
 
 	private Long id;
-	private String razaoSocial;
-	private String cnpj;
+	private String razaoSocial = "Empresa Exemplo";
+	private String cnpj = "51463645000100";
 	private Date dataCriacao;
 	private Date dataAtualizacao;
 	private List<Funcionario> funcionarios;

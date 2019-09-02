@@ -42,6 +42,28 @@ public class Funcionario implements Serializable {
 	private Empresa empresa;
 	private List<Lancamento> lancamentos;
 
+	public Funcionario(Long id, String nome, String email, String senha, String cpf, BigDecimal valorHora,
+			Float qtdHorasTrabalhoDia, Float qtdHorasAlmoco, PerfilEnum perfil, Date dataCriacao, Date dataAtualizacao,
+			Empresa empresa, List<Lancamento> lancamentos) {
+
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+		this.cpf = cpf;
+		this.valorHora = valorHora;
+		this.qtdHorasTrabalhoDia = qtdHorasTrabalhoDia;
+		this.qtdHorasAlmoco = qtdHorasAlmoco;
+		this.perfil = perfil;
+		this.dataCriacao = dataCriacao;
+		this.dataAtualizacao = dataAtualizacao;
+		this.empresa = empresa;
+		this.lancamentos = lancamentos;
+
+	}
+
+	public Funcionario() {}
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public Long getId() {
@@ -168,7 +190,11 @@ public class Funcionario implements Serializable {
 
 	@PrePersist
 	public void prePersist() {
-		dataCriacao = new Date();
+
+		Date data = new Date();
+		dataCriacao = data;
+		dataAtualizacao = data;
+
 	}
 
 	@Override

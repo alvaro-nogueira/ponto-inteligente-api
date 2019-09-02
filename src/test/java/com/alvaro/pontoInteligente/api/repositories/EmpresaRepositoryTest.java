@@ -1,6 +1,5 @@
 package com.alvaro.pontoInteligente.api.repositories;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.AfterAll;
@@ -15,7 +14,6 @@ import org.springframework.test.context.ActiveProfiles;
 import com.alvaro.pontoInteligente.api.builders.EmpresaBuilder;
 import com.alvaro.pontoInteligente.api.entities.Empresa;
 
-//@RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
 @TestInstance(Lifecycle.PER_CLASS)
@@ -31,7 +29,6 @@ public class EmpresaRepositoryTest {
 
 		Empresa empresa = new EmpresaBuilder()
 				.withCnpj(CNPJ)
-				.withRazaoSocial("Empresa Exemplo")
 				.build();
 
 		empresaRepository.save(empresa);

@@ -18,8 +18,8 @@ import com.alvaro.pontoInteligente.api.entities.Lancamento;
 })
 public interface LancamentoRepository extends JpaRepository<Lancamento, Long> {
 
-	List<Lancamento> findByFuncionarioId(@Param("funcionarioId") Long fuincionarioId);
+	List<Lancamento> findByFuncionarioId(@Param("funcionarioId") Long funcionarioId);
 
-	Page<Lancamento> findByFuncionarioId(@Param("funcionarioId") Long fuincionarioId, Pageable pageable);
+	Page<Lancamento> findByFuncionarioId(@Param("funcionarioId") Long funcionarioId, Pageable pageable);
 
 }
