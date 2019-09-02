@@ -28,6 +28,22 @@ public class Empresa implements Serializable {
 	private Date dataCriacao;
 	private Date dataAtualizacao;
 	private List<Funcionario> funcionarios;
+	
+	public Empresa() {
+		
+	}
+
+	public Empresa(Long id, String razaoSocial, String cnpj, Date dataCriacao, Date dataAtualizacao, List<Funcionario> funcionarios) {
+
+		super();
+		this.id = id;
+		this.razaoSocial = razaoSocial;
+		this.cnpj = cnpj;
+		this.dataCriacao = dataCriacao;
+		this.dataAtualizacao = dataAtualizacao;
+		this.funcionarios = funcionarios;
+
+	}
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
