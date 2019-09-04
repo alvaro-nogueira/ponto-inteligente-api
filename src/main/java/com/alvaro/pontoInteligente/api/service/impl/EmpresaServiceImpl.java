@@ -27,6 +27,8 @@ public class EmpresaServiceImpl implements EmpresaService {
 	public Optional<Empresa> buscarPorCnpj(String cnpj) {
 
 		logger.info("Buscando empresa por CNPJ {} " + cnpj);
+		
+		//throw new RuntimeException("21312312");
 
 		return Optional.ofNullable(empresaRepository.findByCnpj(cnpj));
 
@@ -36,6 +38,8 @@ public class EmpresaServiceImpl implements EmpresaService {
 	public Empresa persistir(Empresa empresa) {
 
 		logger.info("Persistindo empresa: {} " + empresa);
+		
+		//throw new RuntimeException("21312312");
 
 		return this.empresaRepository.save(empresa);
 

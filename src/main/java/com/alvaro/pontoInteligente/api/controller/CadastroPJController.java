@@ -18,6 +18,7 @@ import com.alvaro.pontoInteligente.api.dto.CadastroPJDto;
 import com.alvaro.pontoInteligente.api.entities.Empresa;
 import com.alvaro.pontoInteligente.api.entities.Funcionario;
 import com.alvaro.pontoInteligente.api.enums.PerfilEnum;
+import com.alvaro.pontoInteligente.api.exception.ApiValidationException;
 import com.alvaro.pontoInteligente.api.mapper.CadastroPJMapper;
 import com.alvaro.pontoInteligente.api.response.Response;
 import com.alvaro.pontoInteligente.api.service.EmpresaService;
@@ -64,11 +65,8 @@ public class CadastroPJController {
 		
 		if (result.hasErrors()) {
 
-			logger.error("Erro validando dados de cadastro PJ: {}", result.getAllErrors());
-			result.getAllErrors().forEach(error -> response.getErrors().add(error.getDefaultMessage()));
+			throw new ApiValidationException("Erros encontrados ao validar o objeto " + result.getObjectName(), result.getAllErrors());
 
-			return ResponseEntity.badRequest().body(response);
-	
 		}
 
 		empresaService.persistir(empresa);

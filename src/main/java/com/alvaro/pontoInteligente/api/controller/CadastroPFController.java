@@ -21,6 +21,7 @@ import com.alvaro.pontoInteligente.api.dto.CadastroPFDto;
 import com.alvaro.pontoInteligente.api.entities.Empresa;
 import com.alvaro.pontoInteligente.api.entities.Funcionario;
 import com.alvaro.pontoInteligente.api.enums.PerfilEnum;
+import com.alvaro.pontoInteligente.api.exception.ApiValidationException;
 import com.alvaro.pontoInteligente.api.mapper.CadastroPFMapper;
 import com.alvaro.pontoInteligente.api.response.Response;
 import com.alvaro.pontoInteligente.api.service.EmpresaService;
@@ -61,10 +62,7 @@ public class CadastroPFController {
 
 		if (result.hasErrors()) {
 
-			log.error("Erro validando dados de cadastro PF: {}", result.getAllErrors());
-			result.getAllErrors().forEach(error -> response.getErrors().add(error.getDefaultMessage()));
-
-			return ResponseEntity.badRequest().body(response);
+			throw new ApiValidationException("Erros encontrados ao validar o objeto: " + result.getObjectName(), result.getAllErrors());
 
 		}
 
@@ -97,10 +95,10 @@ public class CadastroPFController {
 		}
 
 		this.funcionarioService.buscarPorCpf(cadastroPFDto.getCpf())
-		.ifPresent(func -> result.addError(new ObjectError("funcionario", "CPF já existente.")));
+			.ifPresent(func -> result.addError(new ObjectError("funcionario", "CPF já existente.")));
 
 		this.funcionarioService.buscarPorEmail(cadastroPFDto.getEmail())
-		.ifPresent(func -> result.addError(new ObjectError("funcionario", "Email já existente.")));
+			.ifPresent(func -> result.addError(new ObjectError("funcionario", "Email já existente.")));
 
 	}
 

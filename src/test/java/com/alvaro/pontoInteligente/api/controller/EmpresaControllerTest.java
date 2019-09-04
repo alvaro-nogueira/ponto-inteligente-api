@@ -1,6 +1,5 @@
 package com.alvaro.pontoInteligente.api.controller;
 
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -23,7 +22,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import com.alvaro.pontoInteligente.api.builders.EmpresaBuilder;
 import com.alvaro.pontoInteligente.api.entities.Empresa;
 import com.alvaro.pontoInteligente.api.service.EmpresaService;
-
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -49,7 +47,7 @@ public class EmpresaControllerTest {
 
 		mvc.perform(MockMvcRequestBuilders.get(BUSCAR_EMPRESA_CNPJ_URL + CNPJ).accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isBadRequest())
-				.andExpect(jsonPath("$.errors").value("Empresa não encontrada para o CNPJ " + CNPJ));
+				.andExpect(jsonPath("$.message").value("Empresa não encontrada para o CNPJ " + CNPJ));
 	}
 
 	@Test
@@ -62,10 +60,9 @@ public class EmpresaControllerTest {
 		mvc.perform(MockMvcRequestBuilders.get(BUSCAR_EMPRESA_CNPJ_URL + CNPJ)
 				.accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.data.id").value(ID))
-				.andExpect(jsonPath("$.data.razaoSocial", equalTo(RAZAO_SOCIAL)))
-				.andExpect(jsonPath("$.data.cnpj", equalTo(CNPJ)))
-				.andExpect(jsonPath("$.errors").isEmpty());
+				.andExpect(jsonPath("$.id").value(ID))
+				.andExpect(jsonPath("$.razaoSocial", equalTo(RAZAO_SOCIAL)))
+				.andExpect(jsonPath("$.cnpj", equalTo(CNPJ)));
 
 	}
 
