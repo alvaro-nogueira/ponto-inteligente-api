@@ -28,9 +28,9 @@ public class Empresa implements Serializable {
 	private Date dataCriacao;
 	private Date dataAtualizacao;
 	private List<Funcionario> funcionarios;
-	
+
 	public Empresa() {
-		
+
 	}
 
 	public Empresa(Long id, String razaoSocial, String cnpj, Date dataCriacao, Date dataAtualizacao, List<Funcionario> funcionarios) {
@@ -99,17 +99,21 @@ public class Empresa implements Serializable {
 	public void setFuncionarios(List<Funcionario> funcionarios) {
 		this.funcionarios = funcionarios;
 	}
-	
+
 	@PreUpdate
 	public void preUpdate() {
 		dataAtualizacao = new Date();
 	}
-	
+
 	@PrePersist
 	public void prePersist() {
-		dataCriacao = new Date();
+
+		Date data = new Date();
+		dataAtualizacao = data;
+		dataCriacao = data;
+
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Empresa [id=" + id + "]";
