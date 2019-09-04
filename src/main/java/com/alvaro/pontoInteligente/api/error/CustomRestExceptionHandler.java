@@ -1,4 +1,4 @@
-package com.alvaro.pontoInteligente.api.handler;
+package com.alvaro.pontoInteligente.api.error;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
